@@ -1,5 +1,8 @@
 # build directory
 build/
 
+# Output files
+test_script.out
+
 # config
 .vscode/

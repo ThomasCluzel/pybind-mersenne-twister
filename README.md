@@ -12,6 +12,32 @@ As described in the [documentation](https://docs.python.org/3.9/library/random.h
 
 This project exists only to see how easy (or hard) it would have been to make an existing C code available through Python with pybind11 compared to the official implementation ([see here](https://github.com/python/cpython/blob/main/Lib/random.py)).
 
+
+## Compilation and execution instructions
+
+1. Configure the CMake project
+    ```sh
+    $ cmake -S . -B build
+    # Feel free to use the build system you wish (-G)
+    ```
+1. Compile the project
+    ```sh
+    $ cmake --build build
+    ```
+1. Run the test script
+    ```sh
+    # Make sure to use the same Python version for the execution as the one used to build the module
+    $ python3 test_script.py > test_script.out
+    ```
+1. Compare the output with the one from M. Matsumoto and T. Nishimura
+    ```sh
+    $ diff extern/mt/mt19937ar.out test_script.out
+    $ echo $?
+    # Should print 0
+    ```
+
+Tested on _Ubuntu 18.04.5_ with _gcc 7.5.0_, _Python 3.7.5_, _CMake 3.20.4_. It works!
+
 --------------------------------------------------------------------------------
 
 Thomas Cluzel - 2021
